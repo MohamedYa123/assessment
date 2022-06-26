@@ -9,7 +9,7 @@ class genders(models.Model):
 class government(models.Model):
     text=models.CharField(max_length=100)
     def __str__(self):
-        return self.textgi
+        return self.text
 class profileinfo(models.Model):
     user=models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE)
     First_name=models.CharField(default="",max_length=100)
