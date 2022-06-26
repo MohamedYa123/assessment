@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+{% extends 'Base.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+<div class="container align-middle">
+<div class="row align-middle" style="margin-top:20%;height:100%;">
+<div class="col">
+<form action="" , method="POST" >{% csrf_token %}
+    <div class="row">
+    Username:<input name="username" class="form-control me-2"/></div>
+    <div class="row">Password:<input name="Password" type="password" class="form-control me-2"></div>
+    {{msg}}
+    <div class="row"><a href="{% url 'register' %}" >don't have account register now</a></div>
+    <div class="row"><input type="submit"  value="Login" class="btn btn-outline-success"/></div></div></div>
+</form></div>
+</body>
+</html>
+{% endblock %}

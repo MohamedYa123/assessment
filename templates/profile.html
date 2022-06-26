@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+{% extends 'Base.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ info.First_name }} &nbsp; {{ info.Last_name }}</title>
+</head>
+<body>
+<div class="container">
+<div class="col"><img src="{{info.image.url}}" height="100" width="100"  class="img-fluid" alt="Responsive image"/><br></div>
+<div class="row">Name : {{ info.First_name }} &nbsp; {{ info.Last_name }}&nbsp;
+{% if info.user == user %}
+<a href="{% url 'editprofile' %}">edit</a>{% endif %}</div>
+<div class="row">Id:{{info.user.id}}</div>
+    <div class="row">email : {{ myuser.email }}</div>
+    <div class="row">Gender : {{ info.gender }}</div>
+    <div class="row">Age : {{ info.Age }}</div>
+    <div class="row"> Location : {{ info.location }}</div>
+{% if e == True %}
+{% endif %}<br><br>
+    <div class="row">about : <p>{{ info.About }}</p></div>
+<br></div>
+</body>
+</html>
+{% endblock %}

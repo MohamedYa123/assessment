@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+{% extends 'Base.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Assesment</title>
+</head>
+<body>
+<form action="" , method="POST" >{% csrf_token %}
+<div class="container">
+    Result : {{a_t.assessment_result}} / {{a2.assessment_success}}
+    <br>Result id : {{ a_t.id }}<br>{% if a2.assessment_index == 1 %} use this to create an account {% endif %}
+</div>
+
+</form>
+ </div>
+
+</body>
+</html>
+{% endblock %}

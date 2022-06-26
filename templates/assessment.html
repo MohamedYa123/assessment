@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+{% extends 'Base.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Assesment</title>
+<script type="text/javascript">
+    function goToNewPage()
+    {
+        var url = document.getElementById('Location').value;
+        if(url != 'none') {
+            window.location = url;
+        }
+    }
+</script>
+</head>
+<body>
+<form action="" , method="POST" >{% csrf_token %}
+<div class="container">
+<h1> {{asses.assessment_name }} </h1><br>
+<!--<div class="row" >-->
+    {% for q in qs %}
+    <div class="row">
+    <div class="card">
+    {% for a in q %}
+        {{a|safe}}
+    {% endfor %}
+    </div><br></div><div class="row"><br></div>{% endfor %}
+<!--</div>-->
+<div class="row">
+{% if k %}
+
+<input type="submit"  value="Submit" class="btn btn-outline-success"/>
+{% else %}
+<label style="color: red">You are not allowed to do this assessment !</label>
+{% endif %}
+</div>
+<div class="row"><br></div>
+</div>
+
+</form>
+
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+{% extends 'Base.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>home</title>
+<script type="text/javascript">
+    function goToNewPage()
+    {
+        var url = document.getElementById('Location').value;
+        if(url != 'none') {
+            window.location = url;
+        }
+    }
+</script>
+</head>
+<body>
+
+<div class="container">
+
+<div class="row" style="">
+        {% for p in info %}
+    <div class="col-lg-4 col-md-6 col-sm-12">
+        <div class="card" style="width: 100%;padding:10px;">
+  <img src="https://image.shutterstock.com/image-photo/data-analytics-report-key-performance-260nw-1219444957.jpg" height="200" width="400" /><br>
+  <div class="card-body">
+
+<a class="nav-link active" aria-current="page" href="/media/{{ p.0 }}" download>{{p.1}}</a>
+
+
+  </div>
+</div>
+ </div>
+        {% endfor %}
+</div>
+
+</div>
+
+
+ </div>
+</body>
+</html>
+{% endblock %}

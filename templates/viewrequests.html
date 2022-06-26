@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+{% extends 'Base.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{tr}}&nbsp; Requests</title>
+</head>
+<body>
+<a href="{% url  'viewrequests' 'accepted'  %}" style="color:green">View accepted requests</a>
+<a href="{% url  'viewrequests' 'refused'  %}" style="color:red">View refused requests</a>
+<a href="{% url  'viewrequests' 'pending'  %}" >View pending requests</a>
+<br><br>
+{{tr}} Requests :<br><br>
+{% for l in lis %}
+{% for w2 in l %}
+{% if  w2.refused == False and w2.accepted == False and tr == "pending"  or  w2.refused == False and tr == "accepted"  or   w2.accepted == False and tr == "refused"  %}
+
+<div class="card">
+  <h6 class="card-header">Request from : <a href="{% url 'profile' w2.user.id %}">{{w2.user}}</a>&nbsp; <a href="{% url 'requestview' w2.id %}">View</a><br></h6>
+  <div class="card-body">
+
+    <p class="card-text">
+        Pharmacy:<a href="{% url 'pharmacy' w2.phid.id %}">{{w2.phid}}</a>
+    <br>
+    work as:{{w2.workertype}}
+    <br>
+    shift :{{w2.shifttype}}
+    <br>
+    Request text :"{{w2.requesttext}}"
+    <br>
+</p>
+<a href="{% url  'acceptrequest' w2.id %}" style="color:green" class="btn btn-outline-success">Accept</a>
+<a href="{% url  'refuserequest' w2.id %}" style="color:red" class="btn btn-outline-warning">refuse</a>
+<br>
+  </div>
+</div>
+<br><br>
+<br><br><br>
+
+{% endif %}
+{% endfor %}
+{% endfor %}
+</body>
+</html>
+{% endblock %}

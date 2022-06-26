@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+{% extends 'Base.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>request work at {{ph.Title}}</title>
+</head>
+<body>
+request work at : {{ph.Title}}
+<br><br>
+<div class="container">
+<form action="" method="POST" class="row">{% csrf_token %}
+    {{msg}}
+    {% if ph.open %}
+    <table>{{form.as_table}}</table>
+    {% endif %}
+    {% if w != "" %}
+    Pharmacy:{{w.phid}}
+    <br>
+    work as:{{w.workertype}}
+    <br>
+    shift :{{w.shifttype}}
+    <br>
+    Request text :"{{w.requesttext}}"
+    <br>
+    Case:
+    {% if w.accepted == False and w.refused == False %}
+    Pending
+    {% elif w.accepted == True %}
+    <label style="color:green">Accepted</label>
+    {% else %}
+    <label style="color:red">Refused</label>
+    {% endif %}
+    <br>
+    {% endif %}
+    {% if vv != "" %}
+    {% if vv == "submit" and ph.open == True or vv == "delete" %}
+    <input type="submit" value="{{vv}}" class="btn btn-outline-success"/>
+    {% else %}
+    <label style="color:red">Requesting work is closed now for this Pharmacy</label>
+    {% endif %}
+    {% else %}
+    <a href="{% url  'acceptrequest' w.id %}" style="color:green">Accept</a>
+<br>
+<br>
+<a href="{% url  'refuserequest' w.id %}" style="color:red">refuse</a>
+<br><br>
+    {% endif %}
+</form>
+</div>
+
+</body>
+</html>
+{% endblock %}

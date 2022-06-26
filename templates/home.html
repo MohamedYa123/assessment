@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+{% extends 'Base.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>home</title>
+</head>
+<body>
+
+<div class="container">
+    all assessments <br>
+    {% for a in contenta %}
+        <div class="row"><a href="{% url 'assessment' a.assessment_index %}">{{ a.assessment_name }} </a></div>
+    {% endfor %}
+    assessment you replied <br>
+    {% for a in contentans %}
+        <div class="row"><a href="{% url 'result' a.id %}">{{ a.assessment_id.assessment_name }} </a></div>
+    {% endfor %}
+</div>
+
+
+ </div>
+</body>
+</html>
+{% endblock %}

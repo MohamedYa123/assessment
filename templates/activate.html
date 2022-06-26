@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+{% extends 'Base.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Assesment</title>
+</head>
+<body>
+<div class="container">
+    {{msg|safe}}
+    <a class="nav-link active" aria-current="page" href="{% url 'home' %}">return Home</a>
+</div>
+
+ </div>
+
+</body>
+</html>
+{% endblock %}

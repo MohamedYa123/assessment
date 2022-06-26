@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+{% extends 'Base.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>edit profile</title>
+    <script>
+
+    function load(){
+        document.getElementById("id_First_name").setAttribute("value","{{info.First_name}}");
+        document.getElementById("id_Last_name").setAttribute("value","{{info.Last_name}}");
+        document.getElementById("id_About").innerHTML="{{info.About}}";
+        document.getElementById("id_Age").setAttribute("value","{{info.Age}}");
+        document.getElementById("id_email").setAttribute("value","{{user.email}}");
+
+        }
+
+
+    </script>
+</head>
+<body onload="load()">
+{{msg}}
+<div class="container">
+<form action="" method="POST" enctype="multipart/form-data" class="row form-control me-2">{% csrf_token %}
+        <table>{{form2.as_table}}    </table>
+    <div class="row">
+    <label for="id_email">email:</label>
+    <input type="text" name="email" maxlength="300" required="" id="id_email"></div>
+    <a href="{% url 'uploadprofile' %}">Change profile picture</a>
+    <div class="row">
+        <input type="submit" class="btn btn-outline-success"/></div>
+</form></div>
+
+</body>
+</html>
+{% endblock %}
